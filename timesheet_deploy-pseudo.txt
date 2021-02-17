@@ -1,0 +1,29 @@
+
+if Legislative Counsel Bureau\Timesheet exists, go to LCBinstall
+if Program Files (x86)\Timesheet exists, go to x86
+
+LCBinstall robocopy 'ntc\contents' 'LCB\Timesheet\'
+x86 robocopy 'ntc\contents' 'x86\Timesheet'
+
+#Name:Timesheet_deploy.ps1
+#Description: This script is assigned to GPO 'timesheet' 
+#It is used to call files from GPO_Repository and place in necessary folders on all domain
+#PCs to update to newest ver of timesheet without uninstall/reinstall
+
+#Variables
+$source = "\\nt9\spencer.obrien$\SHARES\Timesheet\*"
+$path1 = "c:\TEST\new1"
+$path2= "c:\TEST\new2"
+
+$new1_test = test-path($path1)
+$new1_Install = copy-item -path $source -Destination c:\\TEST\new1\
+$new2_test = test-path($path2)
+$new2_Install = copy-item -path $source -destination c:\\TEST\new2\
+
+if($new1_test){
+    $new1_Install
+}else {
+    if ($new2_test){
+        $new2_Install
+    }
+}

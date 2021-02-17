@@ -1,0 +1,28 @@
+
+if new timesheet installed, copy necessary folder contents to GPO_Repository
+
+#Name: timesheet_prep.ps1
+#Description: This script is used to call new files from your current LOCAL
+#installation of timesheet, places them in a public repository on NTC, which are
+#then called from timesheet_deploy script and installed globally via GPO. It is highly important that the
+#most CURRENT version of timesheet is installed on the machine you run this script from.
+
+#Variables
+$source1 = "c:\TEST\new1"
+$source1contents = "c:\TEST\new1\*"
+$source2 = "c:\TEST\new2"
+$source2contents = "c:\TEST\new2\*"
+$dest = "\\nt9\spencer.obrien$\SHARES\"
+
+$source1_test = test-path($source1)
+$source1_Install = copy-item -path $source1contents -destination $dest
+$source2_test = test-path($source2)
+$source2_Install = copy-item -path $source2contents -destination $dest
+
+if($source1_test){
+    $source1_Install
+}else {
+    if ($source2_test){
+        $source2_Install
+    }
+}
