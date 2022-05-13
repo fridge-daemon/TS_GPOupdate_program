@@ -1,6 +1,6 @@
 
 #Variables
-$source = "\\nt9\spencer.obrien$\SHARES\Timesheet\*"
+# ADD file repo and admin user for setup $source = "\\fileshare\admin.user$\SHARES\Timesheet\*"
 $path1 = "c:\TEST\new1"
 $path2= "c:\TEST\new2"
 

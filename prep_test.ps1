@@ -4,7 +4,7 @@ $source1 = "c:\TEST\new1"
 $source1contents = "c:\TEST\new1\*"
 $source2 = "c:\TEST\new2"
 $source2contents = "c:\TEST\new2\*"
-$dest = "\\nt9\spencer.obrien$\SHARES\"
+$dest = "\\fileshare\admin.user$\SHARES\"
 
 $source1_test = test-path($source1)
 $source2_test = test-path($source2)
